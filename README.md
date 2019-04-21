@@ -101,6 +101,8 @@ will take care of this.  The first block looks for the [less](http://lesscss.org
 
 The second entry adds support for `*.vue` files in general.  Both of these entries together will let SFCs work properly.
 
+Support for other CSS processors can be added by following the instructions given in the [`vue-loader` documentation](https://vue-loader.vuejs.org/guide/pre-processors.html).
+
 ## Modify the build script
 
 A second CSP may happen because of code that [regenerator-runtime](https://github.com/facebook/regenerator) is generating.  Information about this problem can be found in the [github repo](https://github.com/facebook/regenerator/issues/336).  The generated code looks like this:
@@ -131,7 +133,31 @@ In both cases, all occurences of `Function("return this")()` will be replaced by
 
 ## Modify root.jsx
 
-In initializationCallback, in root.js, I first create a div and then use that as the container. This is because Vue replaces the element it is attached to, instead of being placed inside of it. This was breaking the live app interface.
+In initializationCallback, in root.js, we first create a div and then use that as the container instead of the `rootNode`. This is because Vue replaces the element it is attached to, instead of being placed inside of it.  In the case of a live app, this was removing an element that Quip uses to detect the live app.
+
+The entire file looks like this:
+```
+import quip from "quip";
+
+import Vue from 'vue/dist/vue';
+
+import App from './App.vue';
+Vue.component('App', App);
+
+quip.apps.initialize({
+    initializationCallback: function (rootNode) {
+        const container = document.createElement('div');
+        rootNode.appendChild(container);
+        new Vue({
+            el: container,
+            render: function (h) {
+                return h(App);
+            }
+        });
+    },
+});
+```
+Adding support for properties and Quip params is simple enough.
 
 ## Have fun!
 
