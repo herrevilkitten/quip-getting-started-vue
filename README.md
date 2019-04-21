@@ -4,7 +4,7 @@ This is a guide for creating [Quip Live Apps](https://salesforce.quip.com/about/
 
 A few files are change to provide support for Vue.  Example files can be found in the [files](files) directory.
 
-Instead of making the changes listed here, you can use my [Quip Hello](https://github.com/herrevilkitten/quip-hello-vue) repository as a starter.  It already has all of the necessary changes.
+Instead of making the changes listed here, you can use my [Quip Hello](https://github.com/herrevilkitten/quip-hello-vue) repository as a starter.  It already has all of the necessary changes.  I recommend that you still read through this document in order to learn about the caveats and what that various changes do.
 
 ## Caveats
 
