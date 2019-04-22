@@ -12,7 +12,7 @@ Becaue Quip Live Apps were not designed with Vue in mind, there is no official s
 
 Some other things to keep in mind:
 
-* When creating a React appication, the React libraries are not added to your app.ele bundle because Quip will automatically provide them.  Vue libraries are not provided, so they will be added to the bundle.  This can increase the size of the application by 200KB.
+* When creating a React application, the React libraries are not added to your `app.ele` bundle because Quip will automatically provide them.  Vue libraries are not provided, so they will be added to the bundle.  This can increase the size of the application by 200KB.
 
 * Only Vue [Single File Components (SFC)](https://vuejs.org/v2/guide/single-file-components.html) are supported.  The Vue templating system uses methods which break [Content Security Policy (CSP)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) and will not run as a Live App.  SFCs are compiled at build time and will not break CSP.
 
