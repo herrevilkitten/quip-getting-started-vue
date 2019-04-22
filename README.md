@@ -133,7 +133,7 @@ In both cases, all occurences of `Function("return this")()` will be replaced by
 
 ## Modify root.jsx
 
-In initializationCallback, in root.js, we first create a div and then use that as the container instead of the `rootNode`. This is because Vue replaces the element it is attached to, instead of being placed inside of it.  In the case of a live app, this was removing an element that Quip uses to detect the live app.
+In `initializationCallback`, in `root.jsx`, we first create a div and then use that as the container instead of the `rootNode`. This is because Vue replaces the element it is attached to, instead of being placed inside of it.  In the case of a live app, this removes the original `rootNode`, which is an element that Quip uses to detect the live app.
 
 The entire file looks like this:
 ```
