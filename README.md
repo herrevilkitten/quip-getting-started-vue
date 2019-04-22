@@ -4,7 +4,7 @@ This is a guide for creating [Quip Live Apps](https://salesforce.quip.com/about/
 
 A few files are change to provide support for Vue.  Example files can be found in the [files](files) directory.
 
-Instead of making the changes listed here, you can use my [Quip Hello](https://github.com/herrevilkitten/quip-hello-vue) repository as a starter.  It already has all of the necessary changes.  I recommend that you still read through this document in order to learn about the caveats and what that various changes do.
+Instead of making the changes listed here, you can use my [Quip Hello](https://github.com/herrevilkitten/quip-hello-vue) repository as a starter.  It already has all of the necessary changes.  I still recommend that you read through this document in order to learn about the caveats and what that various changes do.
 
 ## Caveats
 
@@ -75,7 +75,7 @@ try {
 
 This code is used to always find the "global" scope, no matter the environment the javascript is running in.  Unfortunately, in the Quip live app environment, `Function("return this")() || (1, eval)("this")` will cause a CSP error.  More information can be found in the [webpack repo](https://github.com/webpack/webpack/issues/6461).
 
-To get around this issue, the following is added to `webpack.config.js` to disable the code generation.
+To get around this issue, the add the following to `webpack.config.js` to disable the code generation.
 
 ```
 module.exports.node = {
