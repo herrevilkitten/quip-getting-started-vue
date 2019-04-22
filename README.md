@@ -57,7 +57,7 @@ Be careful with working with `package.json`.  A lot of Quip dependencies are onl
 
 ## Modify the Webpack configuration
 
-Webpack may generate code that causes CSP issues.  The generated code looks like this
+There are two things that must be changed in the webpack configuration.  The first change will fix a potential CSP issue in code that webpack generates.  The generated code looks like this
 ```
 // This works in non-strict mode
 g = function () {
@@ -145,19 +145,20 @@ import App from './App.vue';
 Vue.component('App', App);
 
 quip.apps.initialize({
-    initializationCallback: function (rootNode) {
+    initializationCallback: function (rootNode, params) {
         const container = document.createElement('div');
         rootNode.appendChild(container);
         new Vue({
             el: container,
             render: function (h) {
-                return h(App);
+                return h(App, { props: params });
             }
         });
     },
 });
 ```
-Adding support for properties and Quip params is simple enough.
+
+The [initialization parameters](https://salesforce.quip.com/dev/liveapps/documentation#initialization) that Quip passes to the live app will be passed along to the `App` component as a prop.
 
 ## Have fun!
 
