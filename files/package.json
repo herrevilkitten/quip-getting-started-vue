@@ -1,11 +1,11 @@
 {
-  "name": "quip-todo-vue",
+  "name": "quip-guide-vue",
   "version": "0.0.1",
-  "description": "A Vue SFC ToDo list for Quip Live Apps",
+  "description": "A Guide for Quip Live Apps in Vue",
   "license": "Apache-2.0",
   "scripts": {
       "start": "NODE_ENV=development webpack-dev-server --https",
-      "build": "NODE_ENV=production webpack; perl -pi -e 's/Function\\(\"return this\"\\)\\(\\)/window/g' app/dist/app.js; create-quip-app pack ./app"
+      "build": "NODE_ENV=production webpack; sed -i '' 's/Function(\"return this\")()/window/g' app/dist/app.js; create-quip-app pack ./app"
   },
   "author": "Eric Kidder",
   "devDependencies": {
