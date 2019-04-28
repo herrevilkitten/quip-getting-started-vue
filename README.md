@@ -22,6 +22,8 @@ Some other things to keep in mind:
 
 * There are two known CSP issues with the default configuration.  They have been alleviated with some configuration and build changes.  The changes (in `webpack.config.js` and `package.json`) are documented in their sections of this document.
 
+* There is sometimes a problem with UglifyJS when processing the code generated from Vue SFC.  The long-term solution seems to involve updating UglifyJS and Webpack, but that is very involved.  To get around this, you can set `NODE_ENV=development` in `package.json`.
+
 ## Create a new Quip project
 
 Because this guide modifies the default configuration, you should start by installing and running `create-quip-app`
